@@ -1,3 +1,4 @@
+/* ---------- colors ---------- */
 :root {
   --bg: #F3F6F8;
   --white: #FFFFFF;
@@ -12,14 +13,9 @@
   --error_bg: #FBE5E5;
   --ok_text: #17613B;
   --ok_bg: #E4F4EA;
-  --off_bg: #E8EEF2;
-  --off_border: #B3C4CF;
-  --off_icon: #6B8190;
-  --off_title: #3A4F5C;
-  --pill_bg: #D3DEE5;
-  --pill_text: #2D4350;
 }
 
+/* ---------- base ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -114,28 +110,40 @@ body {
   }
 }
 
-/* ---------- section cards (index.html) ---------- */
+/* ---------- section cards (index.html) ----------
+   Two columns: Farm and Equipment on top, Business below over the full width.
+   Grid items stretch, so cards in the same row are the same height. */
 .cards {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 49% 49%;
   justify-content: space-between;
-  align-items: stretch;
   margin-top: 40px;
 
   .card {
     display: flex;
     flex-direction: column;
-    width: 31%;
+    background: var(--white);
+    border: 2px solid var(--blue);
     border-radius: 12px;
+    color: var(--text);
     text-decoration: none;
+    margin-bottom: 24px;
+
+    &:nth-child(3) {
+      grid-column: 1 / -1;
+    }
 
     .card_body {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: flex-start;
       flex: 1;
       margin: 28px;
+
+      .card_icon {
+        color: var(--blue);
+      }
 
       .card_text {
         display: flex;
@@ -152,58 +160,24 @@ body {
         .card_desc {
           font-size: 15px;
           line-height: 1.5;
+          color: var(--text_soft);
         }
       }
-    }
-  }
 
-  .card_active {
-    background: var(--white);
-    border: 2px solid var(--blue);
-    color: var(--text);
+      .card_action {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: auto;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--blue);
 
-    .card_icon {
-      color: var(--blue);
-    }
-
-    .card_desc {
-      color: var(--text_soft);
-    }
-
-    .card_action {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--blue);
-
-      svg {
-        margin-left: 8px;
+        svg {
+          margin-left: 8px;
+          flex-shrink: 0;
+        }
       }
-    }
-  }
-
-  .card_disabled {
-    background: var(--off_bg);
-    border: 2px dashed var(--off_border);
-    color: var(--text_soft);
-
-    .card_icon {
-      color: var(--off_icon);
-    }
-
-    .card_title {
-      color: var(--off_title);
-    }
-
-    .pill {
-      padding: 5px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--pill_text);
-      background: var(--pill_bg);
-      border-radius: 999px;
     }
   }
 }
@@ -428,10 +402,9 @@ body {
   }
 
   .cards {
-    flex-direction: column;
+    grid-template-columns: 100%;
 
     .card {
-      width: 96%;
       margin-bottom: 16px;
     }
   }
