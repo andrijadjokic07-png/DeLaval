@@ -1,0 +1,463 @@
+:root {
+  --bg: #F3F6F8;
+  --white: #FFFFFF;
+  --text: #10242F;
+  --text_soft: #4F6572;
+  --blue: #0B4F8A;
+  --border: #D3DEE5;
+  --input_border: #9DB3C1;
+  --focus: #7DB3E6;
+  --red: #C62828;
+  --error_text: #8E2222;
+  --error_bg: #FBE5E5;
+  --ok_text: #17613B;
+  --ok_bg: #E4F4EA;
+  --off_bg: #E8EEF2;
+  --off_border: #B3C4CF;
+  --off_icon: #6B8190;
+  --off_title: #3A4F5C;
+  --pill_bg: #D3DEE5;
+  --pill_text: #2D4350;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16px;
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------- page + header ---------- */
+.page {
+  width: 90%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 56px 0 72px 0;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', Inter, sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      max-width: 56ch;
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--text_soft);
+    }
+  }
+}
+
+.page_narrow {
+  max-width: 940px;
+
+  .header {
+    margin-bottom: 28px;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      max-width: 62ch;
+    }
+  }
+}
+
+.back_link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+
+  svg {
+    margin-right: 6px;
+  }
+}
+
+/* ---------- section cards (index.html) ---------- */
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 40px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 31%;
+    border-radius: 12px;
+    text-decoration: none;
+
+    .card_body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex: 1;
+      margin: 28px;
+
+      .card_text {
+        display: flex;
+        flex-direction: column;
+        margin: 24px 0 24px 0;
+
+        .card_title {
+          font-family: 'Space Grotesk', Inter, sans-serif;
+          font-weight: 700;
+          font-size: 30px;
+          margin-bottom: 8px;
+        }
+
+        .card_desc {
+          font-size: 15px;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .card_active {
+    background: var(--white);
+    border: 2px solid var(--blue);
+    color: var(--text);
+
+    .card_icon {
+      color: var(--blue);
+    }
+
+    .card_desc {
+      color: var(--text_soft);
+    }
+
+    .card_action {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--blue);
+
+      svg {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .card_disabled {
+    background: var(--off_bg);
+    border: 2px dashed var(--off_border);
+    color: var(--text_soft);
+
+    .card_icon {
+      color: var(--off_icon);
+    }
+
+    .card_title {
+      color: var(--off_title);
+    }
+
+    .pill {
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--pill_text);
+      background: var(--pill_bg);
+      border-radius: 999px;
+    }
+  }
+}
+
+/* ---------- data source tabs (farm.html) ---------- */
+.tabs {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 28px;
+
+  .tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 56px;
+    margin-right: 12px;
+    padding: 8px 22px;
+    font-family: inherit;
+    text-align: left;
+    color: var(--blue);
+    background: var(--white);
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+    cursor: pointer;
+
+    .tab_name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .tab_count {
+      font-size: 13px;
+      margin-top: 2px;
+      opacity: 0.85;
+    }
+  }
+
+  .tab.active {
+    color: var(--white);
+    background: var(--blue);
+  }
+}
+
+/* ---------- form card ---------- */
+.form_card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  .form_inner {
+    margin: 28px;
+
+    .form_head {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+
+      .form_title_box {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          font-family: 'Space Grotesk', Inter, sans-serif;
+          font-weight: 500;
+          font-size: 24px;
+          margin-bottom: 4px;
+        }
+
+        .form_about {
+          font-size: 14px;
+          line-height: 1.4;
+          color: var(--text_soft);
+        }
+      }
+
+      .required_note {
+        font-size: 14px;
+        color: var(--text_soft);
+      }
+    }
+  }
+}
+
+.required {
+  margin-left: 4px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.required_note .required {
+  margin-left: 0;
+  margin-right: 2px;
+}
+
+/* ---------- fields ---------- */
+.fields {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .field_top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+
+      label {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .field_type {
+        font-size: 12px;
+        color: var(--text_soft);
+      }
+    }
+
+    /* width + padding are kept under 100% because box-sizing is not used */
+    input {
+      width: 92%;
+      height: 48px;
+      padding: 0 3%;
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--text);
+      background: var(--white);
+      border: 1px solid var(--input_border);
+      border-radius: 8px;
+    }
+
+    .field_desc {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text_soft);
+    }
+
+    .field_error {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--red);
+    }
+
+    .field_error:empty {
+      display: none;
+    }
+  }
+
+  .field.has_error input {
+    border-color: var(--red);
+  }
+}
+
+/* ---------- messages + buttons ---------- */
+.message {
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 8px;
+}
+
+.message_error {
+  color: var(--error_text);
+  background: var(--error_bg);
+}
+
+.message_ok {
+  color: var(--ok_text);
+  background: var(--ok_bg);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+
+  .button {
+    min-height: 48px;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .button_primary {
+    margin-right: 12px;
+    padding: 0 28px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--blue);
+    border: 0;
+  }
+
+  .button_secondary {
+    padding: 0 24px;
+    font-weight: 500;
+    color: var(--blue);
+    background: var(--white);
+    border: 1px solid var(--input_border);
+  }
+}
+
+/* ---------- phone ---------- */
+@media (max-width: 700px) {
+
+  .page {
+    padding: 32px 0 48px 0;
+
+    .header h1 {
+      font-size: 34px;
+    }
+  }
+
+  .cards {
+    flex-direction: column;
+
+    .card {
+      width: 96%;
+      margin-bottom: 16px;
+    }
+  }
+
+  .form_card .form_inner {
+    margin: 20px;
+
+    .form_head {
+      flex-direction: column;
+
+      .required_note {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .fields {
+    grid-template-columns: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+
+    .button_primary {
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+  }
+}
